@@ -1,4 +1,4 @@
-# mood
+# Mood App
 
 A new Flutter application.
 
