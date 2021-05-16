@@ -81,6 +81,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     if (newUser != null) {
                       Navigator.pushNamed(context, LandingScreen.id);
                     }
+                    if (newUser == null) {
+                      print("User already exists");
+                    }
                     setState(() {
                       showSpinner = false;
                     });
