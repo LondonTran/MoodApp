@@ -20,6 +20,8 @@ class _LandingScreenState extends State<LandingScreen> {
   void initState() {
     super.initState();
     getCurrentUser();
+    saveUserIDAndEmailIntoFirestore();
+    getUsersFriends();
   }
 
   void getCurrentUser() async {
@@ -36,33 +38,39 @@ class _LandingScreenState extends State<LandingScreen> {
     }
   }
 
+  void saveUserIDAndEmailIntoFirestore() async {
+    String userId = loggedInUser.uid;
+    String userEmail = loggedInUser.email;
+  }
+
+  void getUsersFriends() async {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.lightBlueAccent,
-        body: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Center(
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
-                  child: Text(
-                    "How are you feeling?",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                    ),
+      backgroundColor: Colors.lightBlueAccent,
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Center(
+              child: Container(
+                padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+                child: Text(
+                  "How are you feeling?",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
                   ),
                 ),
               ),
-              Center(
-                  child: Container(
+            ),
+            Center(
+              child: Container(
                 padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
                 child: TextFormField(
                   cursorColor: Colors.yellow,
-                  initialValue: 'Input text',
+                  initialValue: 'I\'m feeling...',
                   maxLength: 20,
                   decoration: InputDecoration(
                     labelText: 'Label text',
@@ -78,9 +86,11 @@ class _LandingScreenState extends State<LandingScreen> {
                     ),
                   ),
                 ),
-              ))
-            ],
-          ),
-        ));
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
