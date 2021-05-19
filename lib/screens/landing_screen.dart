@@ -20,7 +20,6 @@ class _LandingScreenState extends State<LandingScreen> {
   void initState() {
     super.initState();
     getCurrentUser();
-    saveUserIDAndEmailIntoFirestore();
     getUsersFriends();
   }
 
@@ -29,18 +28,10 @@ class _LandingScreenState extends State<LandingScreen> {
       final user = await _auth.currentUser;
       if (user != null) {
         loggedInUser = user;
-        print("user ID:");
-        print(loggedInUser.uid);
-        print(loggedInUser.email);
       }
     } catch (e) {
       print(e);
     }
-  }
-
-  void saveUserIDAndEmailIntoFirestore() async {
-    String userId = loggedInUser.uid;
-    String userEmail = loggedInUser.email;
   }
 
   void getUsersFriends() async {}
