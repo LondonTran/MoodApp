@@ -38,6 +38,16 @@ class _LandingScreenState extends State<LandingScreen> {
       backgroundColor: Colors.lightBlueAccent,
       appBar: AppBar(
         title: Text('Mood'),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.close),
+              onPressed: () {
+                _auth.signOut();
+                Navigator.pop(context);
+              }),
+        ],
       ),
       body: SafeArea(
         child: Column(
