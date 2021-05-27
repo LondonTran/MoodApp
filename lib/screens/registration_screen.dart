@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mood/screens/landing_screen.dart';
 import 'package:mood/constants.dart';
@@ -23,7 +22,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Padding(
@@ -32,14 +31,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Flexible(
-                child: Hero(
-                  tag: 'logo',
-                  child: Container(
-                    height: 200.0,
-                    child: Image.asset('images/logo.png'),
-                  ),
-                ),
+              Center(
+                child: Text('Register',
+                    style: TextStyle(
+                      fontSize: 60,
+                      color: Colors.white,
+                    )),
               ),
               SizedBox(
                 height: 48.0,
