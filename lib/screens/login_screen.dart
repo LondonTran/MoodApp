@@ -42,11 +42,17 @@ class _LoginScreenState extends State<LoginScreen> {
               TextField(
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                ),
                 onChanged: (value) {
                   email = value;
                 },
-                decoration:
-                    kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
+                decoration: kTextFieldDecoration.copyWith(
+                    hintText: 'Enter your email',
+                    hintStyle: TextStyle(
+                      color: Colors.white,
+                    )),
               ),
               SizedBox(
                 height: 8.0,
@@ -54,11 +60,17 @@ class _LoginScreenState extends State<LoginScreen> {
               TextField(
                 obscureText: true,
                 textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                ),
                 onChanged: (value) {
                   password = value;
                 },
                 decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Enter your password'),
+                    hintText: 'Enter your password',
+                    hintStyle: TextStyle(
+                      color: Colors.white,
+                    )),
               ),
               SizedBox(
                 height: 24.0,
@@ -76,8 +88,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     if (user != null) {
                       Navigator.pushNamed(context, LandingScreen.id);
                     }
-
+                    if (user == null) {
+                      print("Incorrect email/password");
+                    }
                     setState(() {
+                      print("USER");
+                      print(user);
                       showSpinner = false;
                     });
                   } catch (e) {

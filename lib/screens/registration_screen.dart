@@ -42,23 +42,37 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 height: 48.0,
               ),
               TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  textAlign: TextAlign.center,
-                  onChanged: (value) {
-                    email = value;
-                  },
-                  decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Enter your email')),
+                keyboardType: TextInputType.emailAddress,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+                onChanged: (value) {
+                  email = value;
+                },
+                decoration: kTextFieldDecoration.copyWith(
+                    hintText: 'Enter your email',
+                    hintStyle: TextStyle(
+                      color: Colors.white,
+                    )),
+              ),
               SizedBox(
                 height: 8.0,
               ),
               TextField(
-                  textAlign: TextAlign.center,
-                  onChanged: (value) {
-                    username = value;
-                  },
-                  decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Enter your username')),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+                onChanged: (value) {
+                  username = value;
+                },
+                decoration: kTextFieldDecoration.copyWith(
+                    hintText: 'Enter your username',
+                    hintStyle: TextStyle(
+                      color: Colors.white,
+                    )),
+              ),
               SizedBox(
                 height: 8.0,
               ),
@@ -69,7 +83,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   password = value;
                 },
                 decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Enter your password'),
+                    hintText: 'Enter your password',
+                    hintStyle: TextStyle(
+                      color: Colors.white,
+                    )),
               ),
               SizedBox(
                 height: 24.0,
