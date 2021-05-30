@@ -20,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.white,
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Padding(
@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Text('Login',
                     style: TextStyle(
                       fontSize: 60,
-                      color: Colors.white,
+                      color: Colors.blue,
                     )),
               ),
               SizedBox(
@@ -41,36 +41,42 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               TextField(
                 keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.left,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.grey,
                 ),
                 onChanged: (value) {
                   email = value;
                 },
-                decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Enter your email',
-                    hintStyle: TextStyle(
-                      color: Colors.white,
-                    )),
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Email',
+                ),
+                // decoration: kTextFieldDecoration.copyWith(
+                //   hintText: 'Email',
+                //   hintStyle: TextStyle(
+                //     color: Colors.grey,
+                //   ),
+                // ),
               ),
               SizedBox(
                 height: 8.0,
               ),
               TextField(
                 obscureText: true,
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.left,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.grey,
                 ),
                 onChanged: (value) {
                   password = value;
                 },
                 decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Enter your password',
-                    hintStyle: TextStyle(
-                      color: Colors.white,
-                    )),
+                  hintText: 'Password',
+                  hintStyle: TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
               ),
               SizedBox(
                 height: 24.0,
@@ -88,12 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     if (user != null) {
                       Navigator.pushNamed(context, LandingScreen.id);
                     }
-                    if (user == null) {
-                      print("Incorrect email/password");
-                    }
                     setState(() {
-                      print("USER");
-                      print(user);
                       showSpinner = false;
                     });
                   } catch (e) {
