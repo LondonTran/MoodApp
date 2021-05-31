@@ -98,9 +98,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     setState(() {
                       showSpinner = false;
                     });
-                  } catch (e) {
-                    print(e);
-                    FirebaseAuthHandler(e).handleErrorCodes();
+                  } catch (errorCode) {
+                    FirebaseAuthHandler().handleErrorCodes(errorCode);
                     setState(() {
                       showSpinner = false;
                     });
