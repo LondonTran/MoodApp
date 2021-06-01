@@ -4,7 +4,7 @@ import 'package:mood/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mood/screens/landing_screen.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
-import 'package:mood/services/firebase_auth_handler.dart';
+import 'package:mood/services/firebase_auth_error_handler.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = 'login_screen';
@@ -14,16 +14,17 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _auth = FirebaseAuth.instance;
-  bool showSpinner = false;
+  bool showLoadingIcon = false;
   String email;
   String password;
+  String signInError = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: ModalProgressHUD(
-        inAsyncCall: showSpinner,
+        inAsyncCall: showLoadingIcon,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
@@ -87,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 colour: Colors.lightBlueAccent,
                 onPressed: () async {
                   setState(() {
-                    showSpinner = true;
+                    showLoadingIcon = true;
                   });
                   try {
                     final user = await _auth.signInWithEmailAndPassword(
@@ -96,12 +97,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.pushNamed(context, LandingScreen.id);
                     }
                     setState(() {
-                      showSpinner = false;
+                      showLoadingIcon = false;
                     });
-                  } catch (errorCode) {
-                    FirebaseAuthHandler().handleErrorCodes(errorCode);
+                  } catch (error) {
+                    signInError =
+                        FirebaseAuthErrorHandler().handleErrorCodes(error);
                     setState(() {
-                      showSpinner = false;
+                      showLoadingIcon = false;
                     });
                   }
                 },
