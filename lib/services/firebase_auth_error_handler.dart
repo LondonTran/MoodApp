@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseAuthErrorHandler {
   String errorMessage = "";
+
   handleErrorCodes(FirebaseAuthException error) {
     switch (error.code) {
       case "invalid-email":
@@ -30,9 +31,11 @@ class FirebaseAuthErrorHandler {
         break;
       case "weak-password":
         print("Weak password.");
-        errorMessage = "Weak password";
+        errorMessage = "Password must be at least 6 characters long.";
         break;
     }
+    print("errorMessage");
+    print(errorMessage);
     return errorMessage;
   }
 }

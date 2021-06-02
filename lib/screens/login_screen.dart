@@ -17,7 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool showLoadingIcon = false;
   String email;
   String password;
-  String signInError = "";
+  String errorMessage = "";
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +83,12 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 24.0,
               ),
+              Text(
+                errorMessage,
+                style: TextStyle(
+                  color: Colors.red,
+                ),
+              ),
               RoundedButton(
                 title: 'Log In',
                 colour: Colors.lightBlueAccent,
@@ -91,6 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     showLoadingIcon = true;
                   });
                   try {
+                    errorMessage = "";
                     final user = await _auth.signInWithEmailAndPassword(
                         email: email, password: password);
                     if (user != null) {
@@ -100,9 +107,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       showLoadingIcon = false;
                     });
                   } catch (error) {
-                    signInError =
-                        FirebaseAuthErrorHandler().handleErrorCodes(error);
                     setState(() {
+                      errorMessage =
+                          FirebaseAuthErrorHandler().handleErrorCodes(error);
                       showLoadingIcon = false;
                     });
                   }

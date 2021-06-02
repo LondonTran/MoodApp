@@ -19,7 +19,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   String email;
   String username;
   String password;
-  String signInError = "";
+  String errorMessage = "";
 
   @override
   Widget build(BuildContext context) {
@@ -93,6 +93,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               SizedBox(
                 height: 24.0,
               ),
+              Text(
+                errorMessage,
+                style: TextStyle(
+                  color: Colors.red,
+                ),
+              ),
               RoundedButton(
                 title: 'Register',
                 colour: Colors.blueAccent,
@@ -101,6 +107,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     showLoadingIcon = true;
                   });
                   try {
+                    errorMessage = "";
                     final newUser = await _auth.createUserWithEmailAndPassword(
                         email: email, password: password);
                     if (newUser != null) {
@@ -114,9 +121,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       showLoadingIcon = false;
                     });
                   } catch (error) {
-                    signInError =
-                        FirebaseAuthErrorHandler().handleErrorCodes(error);
                     setState(() {
+                      errorMessage =
+                          FirebaseAuthErrorHandler().handleErrorCodes(error);
                       showLoadingIcon = false;
                     });
                   }
