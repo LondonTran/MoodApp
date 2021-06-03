@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mood/screens/landing_screen.dart';
 import 'package:mood/constants.dart';
-import 'package:mood/services/firebase.dart';
+import 'package:mood/services/user_setup.dart';
 import 'package:mood/components/rounded_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mood/services/firebase_auth_error_handler.dart';
@@ -24,7 +24,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.white,
       body: ModalProgressHUD(
         inAsyncCall: showLoadingIcon,
         child: Padding(
@@ -37,7 +37,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 child: Text('Register',
                     style: TextStyle(
                       fontSize: 60,
-                      color: Colors.white,
+                      color: Colors.blue,
                     )),
               ),
               SizedBox(
@@ -45,34 +45,34 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
               TextField(
                 keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.left,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.grey,
                 ),
                 onChanged: (value) {
                   email = value;
                 },
                 decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Enter your email',
+                    hintText: 'Email',
                     hintStyle: TextStyle(
-                      color: Colors.white,
+                      color: Colors.grey,
                     )),
               ),
               SizedBox(
                 height: 8.0,
               ),
               TextField(
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.left,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.grey,
                 ),
                 onChanged: (value) {
                   username = value;
                 },
                 decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Enter your username',
+                    hintText: 'Username',
                     hintStyle: TextStyle(
-                      color: Colors.white,
+                      color: Colors.grey,
                     )),
               ),
               SizedBox(
@@ -80,14 +80,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
               TextField(
                 obscureText: true,
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.left,
                 onChanged: (value) {
                   password = value;
                 },
                 decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Enter your password',
+                    hintText: 'Password',
                     hintStyle: TextStyle(
-                      color: Colors.white,
+                      color: Colors.grey,
                     )),
               ),
               SizedBox(
