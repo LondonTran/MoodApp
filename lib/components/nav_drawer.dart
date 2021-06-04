@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mood/screens/login_screen.dart';
 
 class NavDrawer extends StatelessWidget {
+  NavDrawer(this._auth);
+
+  final _auth;
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -8,40 +13,24 @@ class NavDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            child: Text(
-              'Side menu',
-              style: TextStyle(color: Colors.white, fontSize: 25),
-            ),
             decoration: BoxDecoration(
-                color: Colors.green,
-                image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage('assets/images/cover.jpg'))),
+              color: Colors.blue,
+            ),
+            child: Text('Drawer Header'),
           ),
           ListTile(
-            leading: Icon(Icons.input),
-            title: Text('Welcome'),
-            onTap: () => {},
+            title: Text('Item 1'),
+            onTap: () {
+              Navigator.pop(context);
+            },
           ),
           ListTile(
-            leading: Icon(Icons.verified_user),
-            title: Text('Profile'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-          ListTile(
-            leading: Icon(Icons.border_color),
-            title: Text('Feedback'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-          ListTile(
-            leading: Icon(Icons.exit_to_app),
-            title: Text('Logout'),
-            onTap: () => {Navigator.of(context).pop()},
+            title: Text('Sign Out'),
+            onTap: () {
+              _auth.signOut();
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil(LoginScreen.id, (route) => false);
+            },
           ),
         ],
       ),

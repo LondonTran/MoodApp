@@ -36,20 +36,10 @@ class _LandingScreenState extends State<LandingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
-      drawer: NavDrawer(),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Mood'),
         centerTitle: true,
-        automaticallyImplyLeading: false,
-        actions: <Widget>[
-          IconButton(
-              icon: Icon(Icons.close),
-              onPressed: () {
-                _auth.signOut();
-                Navigator.pop(context);
-              }),
-        ],
       ),
       body: SafeArea(
         child: Column(
@@ -57,6 +47,7 @@ class _LandingScreenState extends State<LandingScreen> {
           children: <Widget>[],
         ),
       ),
+      drawer: NavDrawer(_auth),
     );
   }
 }
