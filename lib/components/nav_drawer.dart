@@ -16,7 +16,12 @@ class NavDrawer extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.blue,
             ),
-            child: Text('Drawer Header'),
+            child: Text(
+              'Mood',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
           ),
           ListTile(
             title: Text('Item 1'),
