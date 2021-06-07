@@ -7,7 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 FirebaseAuth auth = FirebaseAuth.instance;
 User currentUser;
 String currentUserUID;
-Future<dynamic> friendsList;
+List<dynamic> friendsList;
 
 class LandingScreen extends StatefulWidget {
   static const String id = 'landing_screen';
@@ -32,23 +32,21 @@ class _LandingScreenState extends State<LandingScreen> {
   }
 
   void getCurrentUser() {
-    final currentUser = _auth.currentUser;
+    currentUser = _auth.currentUser;
   }
 
   void getCurrentUserUID() {
     currentUserUID = auth.currentUser.uid;
   }
 
-  void getFriendsList() {
-    friendsList = FirebaseFirestore.instance
+  void getFriendsList() async {
+    await FirebaseFirestore.instance
         .collection("Users")
         .doc(currentUserUID)
         .get()
         .then((value) {
-      return value.data()["friends"];
+      friendsList = value.data()["friends"];
     });
-    print("friendsList");
-    print(friendsList);
   }
 
   @override
