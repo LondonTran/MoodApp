@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mood/screens/login_screen.dart';
-import 'package:mood/services/user_data.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class NavDrawer extends StatelessWidget {
+  NavDrawer(this._auth);
+
+  final FirebaseAuth _auth;
+
   @override
   Widget build(BuildContext context) {
     return Drawer(

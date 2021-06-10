@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mood/screens/landing_screen.dart';
+import 'package:mood/screens/home_screen.dart';
 import 'package:mood/constants.dart';
 import 'package:mood/services/user_setup.dart';
 import 'package:mood/components/rounded_button.dart';

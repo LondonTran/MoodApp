@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mood/services/user_data.dart';
 
 class FriendsFeed extends StatefulWidget {
+  FriendsFeed(this.friendsList);
+
+  final List<dynamic> friendsList;
+
   @override
   _FriendsFeedState createState() => _FriendsFeedState();
 }
@@ -10,12 +13,14 @@ class _FriendsFeedState extends State<FriendsFeed> {
   @override
   void initState() {
     super.initState();
-    printFriendsList(widget.friendsList);
+    printFriendsList();
   }
 
-  void printFriendsList(List<dynamic> friendsList) {
-    print("friendsList from friends_feed.dart");
-    print(friendsList);
+  void printFriendsList() {
+    print("friendsList data from friends_feed");
+    print(widget.friendsList);
+    print("friendsList length from friends_feed");
+    print(widget.friendsList.length);
   }
 
   @override

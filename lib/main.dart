@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mood/screens/welcome_screen.dart';
 import 'package:mood/screens/login_screen.dart';
 import 'package:mood/screens/registration_screen.dart';
-import 'package:mood/screens/landing_screen.dart';
+import 'package:mood/screens/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Future main() async {

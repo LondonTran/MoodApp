@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mood/components/friends_feed.dart';
 import 'package:mood/components/nav_drawer.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mood/components/friends_feed.dart';
-
-
+import 'package:mood/services/user_data.dart';
 
 class LandingScreen extends StatefulWidget {
   static const String id = 'landing_screen';
@@ -16,10 +13,24 @@ class LandingScreen extends StatefulWidget {
 }
 
 class _LandingScreenState extends State<LandingScreen> {
+  FirebaseAuth auth;
+  List<dynamic> friendsList;
 
   @override
   void initState() {
     super.initState();
+    pullUserData();
+  }
+
+  Future<void> pullUserData() async {
+    UserData userData = UserData();
+    await userData.getUserData();
+    auth = userData.auth;
+    friendsList = userData.friendsList;
+    print("friendsList data from home_screen");
+    print(friendsList);
+    print("friendsList length from home_screen");
+    print(friendsList.length);
   }
 
   @override
@@ -30,8 +41,8 @@ class _LandingScreenState extends State<LandingScreen> {
         title: Text('Mood'),
         centerTitle: true,
       ),
-      drawer: NavDrawer(),
-      body: FriendsFeed(),
+      drawer: NavDrawer(auth),
+      body: FriendsFeed(friendsList),
     );
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mood/components/rounded_button.dart';
 import 'package:mood/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:mood/screens/landing_screen.dart';
+import 'package:mood/screens/home_screen.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:mood/services/firebase_auth_error_handler.dart';
 

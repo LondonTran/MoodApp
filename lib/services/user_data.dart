@@ -12,7 +12,7 @@ class UserData {
   String get currentUserUID => _currentUserUID;
   List<dynamic> get friendsList => _friendsList;
 
-  void getUserData() async {
+  Future<void> getUserData() async {
     getCurrentUser();
     getCurrentUserUID();
     await getFriendsList();
@@ -34,7 +34,9 @@ class UserData {
         .then((value) {
       _friendsList = value.data()["friends"];
     });
-    print("friendsList");
+    print("friendsList data from user_data");
     print(_friendsList);
+    print("friendsList length from user_data");
+    print(_friendsList.length);
   }
 }
