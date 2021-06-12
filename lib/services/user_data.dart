@@ -2,12 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserData {
-  final _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   User _currentUser;
   String _currentUserUID;
   List<dynamic> _friendsList;
 
-  get auth => _auth;
+  FirebaseAuth get auth => _auth;
   User get currentUser => _currentUser;
   String get currentUserUID => _currentUserUID;
   List<dynamic> get friendsList => _friendsList;
@@ -34,9 +34,5 @@ class UserData {
         .then((value) {
       _friendsList = value.data()["friends"];
     });
-    print("friendsList data from user_data");
-    print(_friendsList);
-    print("friendsList length from user_data");
-    print(_friendsList.length);
   }
 }

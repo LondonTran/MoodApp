@@ -15,22 +15,22 @@ class LandingScreen extends StatefulWidget {
 class _LandingScreenState extends State<LandingScreen> {
   FirebaseAuth auth;
   List<dynamic> friendsList;
+  bool isLoading = true;
+
+  Future<void> pullUserData() async {
+    UserData userData = UserData();
+    await userData.getUserData();
+    setState(() {
+      auth = userData.auth;
+      friendsList = userData.friendsList;
+      isLoading = false;
+    });
+  }
 
   @override
   void initState() {
     super.initState();
     pullUserData();
-  }
-
-  Future<void> pullUserData() async {
-    UserData userData = UserData();
-    await userData.getUserData();
-    auth = userData.auth;
-    friendsList = userData.friendsList;
-    print("friendsList data from home_screen");
-    print(friendsList);
-    print("friendsList length from home_screen");
-    print(friendsList.length);
   }
 
   @override
@@ -42,7 +42,11 @@ class _LandingScreenState extends State<LandingScreen> {
         centerTitle: true,
       ),
       drawer: NavDrawer(auth),
-      body: FriendsFeed(friendsList),
+      body: isLoading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : FriendsFeed(friendsList),
     );
   }
 }

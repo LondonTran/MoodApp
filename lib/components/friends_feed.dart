@@ -13,14 +13,6 @@ class _FriendsFeedState extends State<FriendsFeed> {
   @override
   void initState() {
     super.initState();
-    printFriendsList();
-  }
-
-  void printFriendsList() {
-    print("friendsList data from friends_feed");
-    print(widget.friendsList);
-    print("friendsList length from friends_feed");
-    print(widget.friendsList.length);
   }
 
   @override
