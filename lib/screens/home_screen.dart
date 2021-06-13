@@ -36,17 +36,33 @@ class _LandingScreenState extends State<LandingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text('Mood'),
-        centerTitle: true,
-      ),
-      drawer: NavDrawer(auth),
-      body: isLoading
-          ? Center(
-              child: CircularProgressIndicator(),
-            )
-          : FriendsFeed(friendsList),
-    );
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          title: Text('Mood'),
+          centerTitle: true,
+        ),
+        drawer: NavDrawer(auth),
+        body: SingleChildScrollView(
+          child: isLoading
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Column(
+                  children: [
+                    Container(
+                      height: 50.0,
+                      width: 20.0,
+                      color: Colors.red,
+                    ),
+                    SizedBox(
+                      height: 100.0,
+                      width: 30.0,
+                    ),
+                    FriendsFeed(friendsList),
+                  ],
+                ),
+        )
+        // FriendsFeed(friendsList),
+        );
   }
 }
