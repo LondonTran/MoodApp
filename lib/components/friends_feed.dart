@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mood/components/friend_card.dart';
 
 class FriendsFeed extends StatefulWidget {
   FriendsFeed(this.friendsList);
@@ -18,39 +19,14 @@ class _FriendsFeedState extends State<FriendsFeed> {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-      for (int index = 0; index < widget.friendsList.length; index++)
-        Center(
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-            child: Container(
-              width: 300.0,
-              height: 100.0,
-              child: Card(
-                  color: Colors.grey.shade100,
-                  shadowColor: Colors.blue,
-                  elevation: 5.0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  child: Column(
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Text('${widget.friendsList[index]}'),
-                        ],
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Text('1st'),
-                          Text('2nd'),
-                          Text('3rd'),
-                        ],
-                      ),
-                    ],
-                  )),
-            ),
-          ),
+      Align(
+        alignment: Alignment.bottomLeft,
+        child: Text(
+          'Friends',
         ),
+      ),
+      for (int index = 0; index < widget.friendsList.length; index++)
+        FriendCard(widget.friendsList, index),
     ]);
   }
 }
