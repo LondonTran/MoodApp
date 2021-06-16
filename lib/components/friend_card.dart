@@ -46,19 +46,21 @@ class _FriendCardState extends State<FriendCard> {
                       ),
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Padding(
                             padding: EdgeInsets.symmetric(
                                 vertical: 10.0, horizontal: 30.0),
-                            child: FriendCardAvatar()),
+                            child: FriendCardAvatar('images/face_one.jpg')),
                         Padding(
                             padding: EdgeInsets.symmetric(
                                 vertical: 10.0, horizontal: 30.0),
-                            child: FriendCardAvatar()),
+                            child: FriendCardAvatar('images/photo_two.jpg')),
                         Padding(
                             padding: EdgeInsets.symmetric(
                                 vertical: 10.0, horizontal: 30.0),
-                            child: FriendCardAvatar()),
+                            child: FriendCardAvatar('images/photo_three.jpg')),
                       ],
                     ),
                   ],
