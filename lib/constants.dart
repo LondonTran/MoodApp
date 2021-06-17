@@ -15,3 +15,11 @@ const kTextFieldDecoration = InputDecoration(
     borderRadius: BorderRadius.all(Radius.circular(10.0)),
   ),
 );
+
+const Color headerColor = Colors.blue;
+
+final Color unTappedColor = Colors.grey.shade100;
+const Color tappedColor = Colors.blue;
+
+const double unTappedElevation = 5.0;
+const double tappedElevation = 20.0;

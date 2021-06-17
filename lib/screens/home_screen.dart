@@ -49,17 +49,6 @@ class _LandingScreenState extends State<LandingScreen> {
                 )
               : Column(
                   children: <Widget>[
-                    // Image(
-                    //   image: AssetImage('images/bluesquare.jpg'),
-                    //   height: 100.0,
-                    //   width: 100.0,
-                    // ),
-                    ClipOval(
-                        child: Image.asset(
-                      'images/bluesquare.jpg',
-                      height: 10.0,
-                      width: 10.0,
-                    )),
                     SizedBox(
                       height: 100.0,
                       width: 30.0,

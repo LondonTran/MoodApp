@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mood/components/friend_card_avatar.dart';
+import 'package:mood/constants.dart';
 
 class FriendCard extends StatefulWidget {
   FriendCard(this.friendsList, this.index);
@@ -12,6 +13,13 @@ class FriendCard extends StatefulWidget {
 }
 
 class _FriendCardState extends State<FriendCard> {
+  bool isCardTapped = false;
+  String friendUsername;
+
+  String getFriendUsername() {
+    return friendUsername = widget.friendsList[widget.index].toString();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -21,14 +29,18 @@ class _FriendCardState extends State<FriendCard> {
           width: 400.0,
           height: 150.0,
           child: Card(
-              color: Colors.grey.shade100,
+              color: isCardTapped ? tappedColor : unTappedColor,
               shadowColor: Colors.blue,
-              elevation: 5.0,
+              elevation: isCardTapped ? tappedElevation : unTappedElevation,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  setState(() {
+                    isCardTapped = !isCardTapped;
+                  });
+                },
                 child: Column(
                   children: <Widget>[
                     Padding(
@@ -36,7 +48,7 @@ class _FriendCardState extends State<FriendCard> {
                       child: Row(
                         children: <Widget>[
                           Text(
-                            '${widget.friendsList[widget.index]}',
+                            getFriendUsername(),
                             style: TextStyle(
                               color: Colors.blue.shade200,
                               fontWeight: FontWeight.w900,

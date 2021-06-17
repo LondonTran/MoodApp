@@ -12,18 +12,18 @@ class UserData {
   String get currentUserUID => _currentUserUID;
   List<dynamic> get friendsList => _friendsList;
 
-  Future<void> getUserData() async {
-    getCurrentUser();
-    getCurrentUserUID();
-    await getFriendsList();
-  }
-
   void getCurrentUser() {
     _currentUser = _auth.currentUser;
   }
 
   void getCurrentUserUID() {
     _currentUserUID = _auth.currentUser.uid;
+  }
+
+  Future<void> getUserData() async {
+    getCurrentUser();
+    getCurrentUserUID();
+    await getFriendsList();
   }
 
   Future<void> getFriendsList() async {

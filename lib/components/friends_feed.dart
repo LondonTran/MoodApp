@@ -1,5 +1,9 @@
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mood/components/friend_card.dart';
+import 'package:mood/constants.dart';
 
 class FriendsFeed extends StatefulWidget {
   FriendsFeed(this.friendsList);
@@ -20,9 +24,17 @@ class _FriendsFeedState extends State<FriendsFeed> {
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
       Align(
-        alignment: Alignment.bottomLeft,
-        child: Text(
-          'Friends',
+        alignment: Alignment.centerLeft,
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+          child: Text(
+            'Friends',
+            style: TextStyle(
+              color: headerColor,
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
       ),
       for (int index = 0; index < widget.friendsList.length; index++)
