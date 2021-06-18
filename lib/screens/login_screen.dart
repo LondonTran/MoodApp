@@ -50,16 +50,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 onChanged: (value) {
                   email = value;
                 },
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                decoration: kTextFieldDecoration.copyWith(
                   hintText: 'Email',
+                  hintStyle: TextStyle(
+                    color: Colors.grey,
+                  ),
                 ),
-                // decoration: kTextFieldDecoration.copyWith(
-                //   hintText: 'Email',
-                //   hintStyle: TextStyle(
-                //     color: Colors.grey,
-                //   ),
-                // ),
               ),
               SizedBox(
                 height: 8.0,
