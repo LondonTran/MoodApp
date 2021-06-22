@@ -7,7 +7,6 @@ import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:mood/services/firebase_auth_error_handler.dart';
 
 class LoginScreen extends StatefulWidget {
-  static const String id = 'login_screen';
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
