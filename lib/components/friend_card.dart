@@ -13,7 +13,7 @@ class FriendCard extends StatefulWidget {
 }
 
 class _FriendCardState extends State<FriendCard> {
-  bool isCardTapped = false;
+  bool isCardTappedOnce = false;
   String friendUsername;
 
   String getFriendUsername() {
@@ -29,16 +29,16 @@ class _FriendCardState extends State<FriendCard> {
           width: 400.0,
           height: 150.0,
           child: Card(
-              color: isCardTapped ? tappedColor : unTappedColor,
+              color: isCardTappedOnce ? tappedColor : unTappedColor,
               shadowColor: Colors.blue,
-              elevation: isCardTapped ? tappedElevation : unTappedElevation,
+              elevation: isCardTappedOnce ? tappedElevation : unTappedElevation,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
               child: InkWell(
                 onTap: () {
                   setState(() {
-                    isCardTapped = !isCardTapped;
+                    isCardTappedOnce = !isCardTappedOnce;
                   });
                 },
                 child: Column(
